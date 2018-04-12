@@ -193,7 +193,7 @@ wt_summary <- chicks %>%
             wt_quart2 = quantile(weight, 0.5),
             wt_quart3 = quantile(weight, 0.75))
 
-
+# end of day 1
 
 
 
