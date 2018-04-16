@@ -65,12 +65,17 @@ r_dat %>%
             
 
 # The standard deviation 
-              r_dat %>% 
-              summarise(r_var = var(dat),
-                        r_sd = sqrt(r_var),
-                        r_sd_func = sd(dat))
+ r_dat %>% 
+   summarise(r_var = var(dat),
+             r_sd = sqrt(r_var),
+             r_sd_func = sd(dat))
 
+# Calculate the kurtosis and skewness 
+# Load library
+library(e1071)
 
+kurtosis(r_dat$dat) # Fat-tailed distribution 
+skewness(r_dat$dat) # Mean less than median - left-skewed 
               
 # Use summarise() approach and construct a data summary with exactly the same
 # summary statistics
@@ -85,7 +90,6 @@ ChickWeight %>%
             mean_weight= mean(weight),
             quart_3 = quantile(weight, 0.75),
             max_weight = max(weight))
-
 
 # Visualisations -----------------------------------------------------------
 # Load additional libraries 
@@ -113,7 +117,7 @@ sa_long <- sa_time %>%
   gather(key = "time_type", value = "minutes", -human)
 
 
-# Craete a count of qualitative values 
+# Create a count of qualitative values 
 sa_count <- sa_long %>%
   count(time_type) %>% 
   mutate(prop = n/sum(n))
@@ -133,6 +137,13 @@ ggplot(data = sa_count, aes(x = "", y = prop, fill = time_type)) +
        x = NULL, y = "Proportion") +
   theme_minimal()
 
+# Side-by-side bars  
+ggplot(data = sa_count, aes(x = time_type, fill = time_type)) +
+  geom_bar(show.legend = FALSE) +
+  labs(title = "Side-by-side bars", subtitle = "n per species", y = "Count") +
+  theme_minimal()
+
+# Pie chart 
 ggplot(data = sa_count, aes(x = "", y = prop, fill = time_type)) +
   geom_bar(width = 1, stat = "identity") +
    labs(title = "Pie chart", subtitle = "but why though...",
@@ -148,7 +159,7 @@ ggplot(data = sa_long, aes(x = minutes)) +
   geom_histogram()
 
 # oh no !
-# Let's get rid of that one value...
+# Let's get rid of that one value...(n/A value)
 
 sa_clean <- sa_long %>% 
   filter(minutes < 300)
@@ -208,7 +219,7 @@ ggplot(data = sa_time, aes(y = now_now, x = just_now)) +
    coord_equal(xlim = c(0, 60), ylim = c(0, 60))
  
  
-# End of day 2 
+# End of day 2 with changes
 
 
 
