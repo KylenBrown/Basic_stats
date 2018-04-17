@@ -7,8 +7,6 @@
 # Load libraries  ---------------------------------------------------------
 
 library(tidyverse)
-library(dplyr)
-library(ggplot2)
 library(ggpubr)
 
 
@@ -58,7 +56,7 @@ r_dat %>%
   mutate(r_error = dat-mean(dat), # Use mutate function to add column
          r_error_square = r_error * r_error) %>% 
   summarise(r_squared_sum = sum(r_error_square),
-            r_var = r_squared_sum/(n()-1))
+            r_var = r_squared_sum/(n()-1),
             # OR use the built in function 
             r_var_func = var(dat))
   
@@ -114,7 +112,7 @@ sa_time <- sa_time %>%
                  rep("Joburg", 2)))
 
 sa_long <- sa_time %>% 
-  gather(key = "time_type", value = "minutes", -human)
+  gather(key = "time_type", value = "minutes", -human, -geo)
 
 
 # Create a count of qualitative values 
@@ -167,7 +165,7 @@ sa_clean <- sa_long %>%
 
 # A faceted histogram 
 ggplot(data = sa_clean, aes(x = minutes)) +
-  geom_histogram(aes(y= fill = time_type), position = "dodge") +
+  geom_histogram(aes(fill = time_type), position = "dodge") +
   facet_wrap(~time_type, ncol = 1, scales = "free_x")
 
 # Relative proportion histogram 
