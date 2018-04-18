@@ -247,4 +247,4 @@ compare_means(Biomass ~ Site, data = biomass_sub, method = "t.test", var.equal =
 # not found to be significantly greater at site 1 than at site 2 
 # (p = 0.22, t = 0.81, df = 8).
 
-# The end of Day 3
+# The end of the third session 
