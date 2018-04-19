@@ -1,5 +1,5 @@
 # Day_4.R
-# The third day of the class 
+# The fourth day of the class 
 # Purpose: ANOVA
 # 19 April 2018 
 
@@ -147,7 +147,7 @@ library(pgirmess)
 kruskalmc(weight ~ Diet, data = chicks_0_21)
 
 
-# Bonus -------------------------------------------------------------------
+# Bonus question -------------------------------------------------------------------
 
 # Exercise 1 
 
@@ -180,7 +180,11 @@ ggplot(data = bacon_1, aes(x = feed, y = mass)) +
 # There is a significant differnce between feed type and the mass of pigs,
 # therefore, feed type does effect the mass of pigs 
 
-# The end of the fourth session 
+
+# The end of the fourth day updated  --------------------------------------
+
+
+
 
 
 
