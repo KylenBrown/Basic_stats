@@ -9,7 +9,6 @@
 
 # Load libraries ----------------------------------------------------------
 library(tidyverse)
-library(ggplot2)
 library(ggpubr)
 
 # First grab the data
@@ -96,7 +95,7 @@ plot(TukeyHSD(aov(weight ~ Diet, data = chicks_21)))
 chicks_0_21 <- ChickWeight %>% 
   filter(Time  %in% c(0, 2, 21))
 
-ggplot(data= chicks_0_21, aes(x = Time, y = weight)) +
+ggplot(data = chicks_0_21, aes(x = as.factor(Time), y = weight)) +
   geom_boxplot(notch = T, aes(fill = as.factor(Time)))
 
 # Run an ANOVA
@@ -182,49 +181,3 @@ ggplot(data = bacon_1, aes(x = feed, y = mass)) +
 
 
 # The end of the fourth day updated  --------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
