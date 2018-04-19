@@ -240,7 +240,7 @@ t.test(Biomass ~ Site, data = biomass_sub, var.equal = TRUE, alternative = "grea
 # Dataframe output
 compare_means(Biomass ~ Site, data = biomass_sub, method = "t.test", var.equal = TRUE, alternative = "greater")
 
-# Conclusing statement  ---------------------------------------------------
+# Concluding statement  ---------------------------------------------------
 
 
 # The biomass (g) of shallow Isolepis digitata samples was 
