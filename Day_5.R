@@ -6,7 +6,7 @@
 # Load libraries ----------------------------------------------------------
 library(tidyverse)
 library(ggpubr)
-library(Rmisc)
+# library(Rmisc) # Unfortunately this overrides many dplyr functions
 
 # Load data ---------------------------------------------------------------
 snakes <- read_csv("snakes.csv") %>% 
@@ -33,7 +33,7 @@ snakes.summary
 
 # Test a hypothesis -------------------------------------------------------
 # First calculate SE and CI
-snakes.summary2 <- summarySE(data = snakes,
+snakes.summary2 <- Rmisc::summarySE(data = snakes,
                              measurevar = "openings",
                              groupvars = c("day"))
 
@@ -112,10 +112,10 @@ moths.trap.summary
 # H0: There is no difference between moths caught with respect to 
 # the type of trap 
 
-moths.Location.summary2 <- summarySE(data = moths,
+moths.Location.summary2 <- Rmisc::summarySE(data = moths,
                              measurevar = "count",
                              groupvars = c("Location"))
-moths.trap.summary2 <- summarySE(data = moths,
+moths.trap.summary2 <- Rmisc::summarySE(data = moths,
                                  measurevar = "count",
                                  groupvars = c("trap"))
 
@@ -255,29 +255,4 @@ ecklonia_heat <- heatmap(ecklonia_pearson, Rowv=NA, Colv=NA,
                          margins=c(13,8))
 
 # The end of the fifth day
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
